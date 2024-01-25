@@ -1,0 +1,14 @@
+@use "../abstracts" as *;
+:root {
+  @include dark {
+    --text: var(--clr-neutral-100);
+    --background: var(--clr-secondary-400);
+    --headings: var(--clr-neutral-100);
+  }
+
+  &:has([data-theme="dark"]) {
+    --text: var(--clr-neutral-100) !important;
+    --background: var(--clr-secondary-400) !important;
+    --headings: var(--clr-neutral-100) !important;
+  }
+}

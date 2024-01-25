@@ -1,0 +1,5 @@
+:root:has([data-theme="light"]) {
+  --text: var(--clr-neutral-700);
+  --background: var(--clr-neutral-50);
+  --headings: var(--clr-neutral-900);
+}

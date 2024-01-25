@@ -1,0 +1,157 @@
+//utility classes, sass placeholders and css custom properties
+@use "../abstracts" as *;
+%sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+%button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+%link {
+  text-decoration: none;
+}
+
+.link {
+  transition: color 0.5s ease;
+
+  &:is(:hover, :focus-visible) {
+    color: var(--clr-primary-400);
+  }
+}
+
+:root {
+  @each $key, $value in $clr-primary {
+    --clr-primary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-secondary {
+    --clr-secondary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-tertiary {
+    --clr-tertiary-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-accent {
+    --clr-accent-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-neutral {
+    --clr-neutral-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-warning {
+    --clr-warning-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-success {
+    --clr-success-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $clr-error {
+    --clr-error-#{$key}: #{$value};
+  }
+
+  --text: var(--clr-neutral-700);
+  --background: var(--clr-neutral-50);
+  --headings: var(--clr-neutral-900);
+}
+
+.flex {
+  --gap: 2em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.flexible-grid {
+  --padding-inline: 2em;
+  --min-width: 28ch;
+  --number-of-items: 3;
+
+  @extend .flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  & > * {
+    flex: 1;
+    flex-basis: max(
+      var(--min-width),
+      calc((100% / var(--number-of-items)) - var(--padding-inline))
+    );
+    padding-inline: var(--padding-inline);
+  }
+}
+
+.grid {
+  --gap: 2em;
+
+  display: grid;
+  gap: var(--gap);
+}
+
+.grid-center {
+  @extend .grid;
+  place-items: center;
+  place-content: center;
+}
+
+.grid-defined {
+  --columns: 6;
+
+  @extend .grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.grid-flexible {
+  --min-column-width: #{em(300)};
+
+  @extend .grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--min-column-width), 100%), 1fr)
+  );
+}
+
+.section {
+  --min-height: 50dvh;
+  max-width: em(1920);
+  min-height: var(--min-height);
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.alert-btn {
+  @extend %button;
+  font-size: 1.5rem;
+}
+
+.notistack-MuiContent-success {
+  background-color: var(--clr-success-400) !important;
+}
+
+.notistack-MuiContent-error {
+  background-color: var(--clr-error-400) !important;
+}
+
+.notistack-MuiContent-warning {
+  background-color: var(--clr-warning-400) !important;
+}
+
+.notistack-MuiContent-info {
+  background-color: var(--clr-secondary-400) !important;
+}

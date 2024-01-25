@@ -1,0 +1,30 @@
+//Basic typography styles for body text
+@use "../abstracts" as *;
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+
+  @include motion {
+    transition: all 0.5s ease;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--headings);
+}
+
+html {
+  @include motion {
+    scroll-behavior: smooth;
+  }
+
+  @include max(small) {
+    font-size: 0.85rem;
+  }
+}

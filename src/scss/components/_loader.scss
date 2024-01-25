@@ -1,0 +1,16 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 99;
+  background-color: var(--background);
+  color: var(--text);
+
+  svg,
+  g,
+  path,
+  stop {
+    fill: var(--clr-primary-400, hsl(165, 59%, 50%)) !important;
+  }
+}
