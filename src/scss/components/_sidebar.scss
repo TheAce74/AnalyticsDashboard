@@ -1,0 +1,269 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.sidebar {
+  @extend .flex;
+  padding-block: 1em;
+  position: sticky;
+  top: 0;
+  flex-direction: column;
+  min-width: max-content;
+  height: 100dvh;
+  background-color: var(--menu);
+  box-shadow: 0 0 4px var(--shadow);
+
+  @include motion {
+    transition: all 0.4s ease;
+  }
+
+  .logo-container {
+    gap: 0.7em;
+    padding-inline: 1em;
+  }
+
+  a,
+  button {
+    @extend %link;
+    @extend %button;
+    display: block;
+    padding-inline: 1em;
+    margin-inline: auto;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  section,
+  nav ul {
+    --gap: 1em;
+    @extend .flex;
+    flex-direction: column;
+  }
+
+  nav ul li {
+    position: relative;
+
+    .after {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      right: 0;
+      width: 0.2em;
+      height: 50%;
+      background-color: transparent;
+      opacity: 0.5;
+      border-radius: 100vmax 0 0 100vmax;
+    }
+
+    &:is(:hover, :focus-within) .after {
+      background-color: var(--text);
+    }
+
+    &:has(a.active) .after {
+      background-color: var(--text);
+      opacity: 1 !important;
+    }
+
+    &:first-of-type {
+      a:not(.active) {
+        svg,
+        path {
+          fill: var(--background) !important;
+          stroke: var(--text) !important;
+        }
+      }
+    }
+
+    a.active {
+      svg,
+      path {
+        fill: var(--text) !important;
+        stroke: var(--background) !important;
+      }
+    }
+  }
+
+  .theme-switcher {
+    padding: 0.8em 0.5em;
+    border-radius: 100vmax;
+    background-color: var(--background);
+    position: relative;
+    isolation: isolate;
+
+    .after {
+      position: absolute;
+      width: 1.7em;
+      aspect-ratio: 1;
+      background-color: var(--clr-primary-400);
+      top: 0.55em;
+      border-radius: 50%;
+      z-index: -1;
+      transition: top 0.4s ease;
+    }
+
+    #dark-theme:checked ~ .after {
+      top: calc(100% - 2.25em);
+    }
+
+    label {
+      cursor: pointer;
+
+      &:first-child {
+        display: block;
+        margin-bottom: 1em;
+      }
+
+      svg {
+        margin-inline: auto;
+        width: 1.7em;
+
+        &:is([aria-label="switch to dark theme"] svg) {
+          width: 1.2em;
+          translate: 0 15%;
+        }
+
+        &:is([aria-label]:has(+ input:checked) svg) {
+          path {
+            fill: var(--background) !important;
+          }
+        }
+
+        &:is([aria-label]:has(+ input:not(:checked)) svg) {
+          path {
+            fill: var(--text) !important;
+          }
+        }
+      }
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  section:last-of-type {
+    width: 100%;
+
+    a {
+      padding-block: 1em;
+    }
+
+    a.active {
+      svg,
+      path {
+        fill: var(--text) !important;
+        stroke: var(--background) !important;
+      }
+    }
+
+    ul {
+      width: 100%;
+
+      li {
+        position: relative;
+
+        .after {
+          position: absolute;
+          top: 50%;
+          translate: 0 -50%;
+          right: 0;
+          width: 0.2em;
+          height: 50%;
+          background-color: transparent;
+          opacity: 0.5;
+          border-radius: 100vmax 0 0 100vmax;
+        }
+
+        &:first-child button svg {
+          height: 2.5em;
+        }
+
+        &:last-child button {
+          width: 100%;
+        }
+
+        &:has(a) .after {
+          height: 25%;
+        }
+
+        &:is(:hover, :focus-within, :focus-visible) .after {
+          background-color: var(--text);
+        }
+
+        &:has(a.active) .after {
+          background-color: var(--text);
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+
+  .collapsible {
+    --gap: 0.5em;
+    @extend .flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    p {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      position: absolute;
+      max-width: 0;
+    }
+  }
+
+  &.expanded .collapsible p {
+    clip-path: none;
+    position: static;
+    max-width: 100%;
+  }
+
+  .expand,
+  .theme-switcher,
+  .theme-switcher svg {
+    @include motion {
+      transition: rotate 0.4s ease;
+    }
+  }
+
+  &.expanded .expand {
+    rotate: 180deg;
+  }
+
+  &.expanded .theme-switcher {
+    rotate: 90deg;
+
+    svg {
+      rotate: -90deg;
+    }
+  }
+
+  .visually-hidden {
+    @extend %sr-only;
+  }
+
+  @include max(small) {
+    .theme-switcher {
+      .after {
+        top: 0.67em;
+        border-radius: 50%;
+        z-index: -1;
+        transition: top 0.4s ease;
+      }
+
+      #dark-theme:checked ~ .after {
+        top: calc(100% - 2.37em);
+      }
+    }
+  }
+
+  @include max(micro) {
+    position: fixed;
+    z-index: 3;
+    translate: -100% 0;
+
+    &[data-mobile="expanded"] {
+      translate: 0 0;
+    }
+  }
+}

@@ -2,13 +2,17 @@
 :root {
   @include dark {
     --text: var(--clr-neutral-100);
-    --background: var(--clr-secondary-400);
+    --menu: var(--clr-secondary-400);
     --headings: var(--clr-neutral-100);
+    --background: var(--clr-secondary-300);
+    --shadow: var(--clr-secondary-200);
   }
 
   &:has([data-theme="dark"]) {
     --text: var(--clr-neutral-100) !important;
-    --background: var(--clr-secondary-400) !important;
+    --menu: var(--clr-secondary-400) !important;
     --headings: var(--clr-neutral-100) !important;
+    --background: var(--clr-secondary-300) !important;
+    --shadow: var(--clr-secondary-200) !important;
   }
 }

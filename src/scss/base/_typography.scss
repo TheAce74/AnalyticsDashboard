@@ -2,12 +2,6 @@
 @use "../abstracts" as *;
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  background-color: var(--background);
-  color: var(--text);
-
-  @include motion {
-    transition: all 0.5s ease;
-  }
 }
 
 h1,
@@ -20,8 +14,12 @@ h6 {
 }
 
 html {
+  background-color: var(--background);
+  color: var(--text);
+
   @include motion {
     scroll-behavior: smooth;
+    transition: all 0.4s ease;
   }
 
   @include max(small) {

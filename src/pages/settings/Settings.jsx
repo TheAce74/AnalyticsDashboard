@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
+import { useLayoutEffect } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 function Settings() {
+  const { setTitle } = useAppContext();
+
+  useLayoutEffect(() => {
+    setTitle("Settings");
+  }, [setTitle]);
+
   return (
     <motion.section
       className="settings"
@@ -10,7 +18,19 @@ function Settings() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <h1>Settings</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse adipisci
+        temporibus enim culpa officiis rerum assumenda similique sequi dolorem
+        nihil quos repellendus dignissimos eius saepe, accusantium perferendis
+        ea, harum pariatur nobis cupiditate excepturi tenetur unde. Quis quam
+        corporis nesciunt repellat, soluta quas quod eveniet incidunt labore
+        beatae ad consectetur nihil amet ullam distinctio accusantium animi
+        excepturi? Quidem at modi doloremque deserunt commodi quis veritatis?
+        Minima nisi aut inventore in labore culpa fugit nam reprehenderit. Nobis
+        id magnam eum omnis inventore odit expedita suscipit facere aspernatur
+        iste aliquid alias ipsum nam pariatur dicta, possimus officia eveniet,
+        dolore voluptatibus perspiciatis, quisquam nostrum?
+      </p>
     </motion.section>
   );
 }

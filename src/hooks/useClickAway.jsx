@@ -3,7 +3,11 @@ import { useEffect } from "react";
 function useClickAway(ref, callback) {
   useEffect(() => {
     const handleClickAway = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (
+        ref.current &&
+        !ref.current.contains(e.target) &&
+        e.target.className !== "hamburger-react"
+      ) {
         callback();
       }
     };

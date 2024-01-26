@@ -1,0 +1,55 @@
+body {
+  $bg-mask: rgb(255 255 255 / 25%);
+  --scroll-size: 6px;
+  --scroll-radius: 20px;
+  --scroll-track: var(--clr-primary-200);
+  --scroll-thumb: linear-gradient(
+    45deg,
+    #{$bg-mask} 20%,
+    transparent 20%,
+    transparent 40%,
+    #{$bg-mask} 40%,
+    #{$bg-mask} 60%,
+    transparent 60%,
+    transparent 80%,
+    #{$bg-mask} 80%
+  );
+  --scroll-thumb-color: var(--clr-primary-400);
+
+  @mixin scroll-style(
+    $size: 10px,
+    $thumb: none,
+    $thumb-color: grey,
+    $thumb-radius: 10px,
+    $track-color: transparent,
+    $track-radius: 10px
+  ) {
+    //Firefox
+    scrollbar-color: $thumb-color $track-color;
+    scrollbar-width: thin;
+
+    //Webkit Browsers
+    &::-webkit-scrollbar {
+      width: $size;
+      height: $size;
+      &-track {
+        background-color: $track-color;
+        border-radius: $track-radius;
+      }
+      &-thumb {
+        background-color: $thumb-color;
+        background-image: $thumb;
+        border-radius: $thumb-radius;
+      }
+    }
+  }
+
+  @include scroll-style(
+    $size: var(--scroll-size, 10px),
+    $thumb: var(--scroll-thumb, none),
+    $thumb-color: var(--scroll-thumb-color, var(--clr-primary-400)),
+    $thumb-radius: var(--scroll-thumb-radius, var(--scroll-radius)),
+    $track-color: var(--scroll-track, transparent),
+    $track-radius: var(--scroll-track-radius, var(--scroll-radius))
+  );
+}

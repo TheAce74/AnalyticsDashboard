@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.dashboard-wrapper {
+  @extend .section;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  .inner,
+  .header {
+    padding-inline: 1.5em;
+  }
+
+  .hamburger-react {
+    position: fixed !important;
+    top: 0.3em;
+    right: 1em;
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 0.5em;
+    z-index: 4;
+
+    & * {
+      pointer-events: none;
+    }
+
+    @include min(micro) {
+      display: none;
+    }
+  }
+}
