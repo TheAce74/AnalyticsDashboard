@@ -1,7 +1,14 @@
+@use "./functions";
 $breakpoints: (
+  "miniscule": functions.em(410),
   "micro": 34em,
   "small": 44em,
   "medium": 50em,
+  "special-5": functions.em(830),
+  "special-4": functions.em(880),
+  "special-3": functions.em(1000),
+  "special-2": functions.em(1140),
+  "special-1": functions.em(1380),
   "large": 75em,
 );
 

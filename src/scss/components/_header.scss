@@ -1,0 +1,214 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.header {
+  @extend .flex;
+  padding: 0.6em 1em;
+  background-color: var(--menu);
+  box-shadow: 0 1px 1px var(--shadow);
+  position: sticky;
+  top: 0;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    --gap: 1em;
+    @extend .flex;
+    flex: 0.75;
+  }
+
+  .search {
+    width: 35%;
+    position: relative;
+
+    input {
+      display: block;
+      width: 100%;
+      border-radius: 100vmax;
+      border: 1px solid var(--text);
+      outline-color: transparent;
+      outline-offset: -0.5em;
+      padding: 0.5em 2.4em;
+      transition: border-color 0.4s ease;
+      color: var(--clr-neutral-700);
+
+      &:focus {
+        border-color: var(--clr-primary-400);
+      }
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      left: 0.7em;
+    }
+  }
+
+  .date {
+    --gap: 0.5em;
+    @extend .flex;
+    justify-content: flex-start;
+    font-weight: bold;
+
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+
+  .notification {
+    @extend %button;
+    border: 1px solid var(--text);
+    padding: 0.5em;
+    border-radius: 50%;
+
+    @include motion {
+      transition: all 0.5s ease;
+    }
+
+    &:is(:hover, :focus-visible) {
+      border-color: var(--clr-primary-400);
+      color: var(--clr-primary-400);
+    }
+
+    &:active {
+      scale: 0.8;
+    }
+
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+
+  .dropdown {
+    border: 1px solid var(--text);
+    border-radius: 100vmax;
+    padding: 0.3em;
+    cursor: pointer;
+    position: relative;
+
+    .shown {
+      --gap: 1.2em;
+      @extend .flex;
+      justify-content: flex-start;
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .extra {
+      position: absolute;
+      width: max-content;
+      top: calc(100% + 0.7em);
+      right: 0;
+      background-color: var(--background);
+      padding: 0.8em;
+      border: 1px solid var(--text);
+      border-radius: 0.5em;
+      visibility: hidden;
+
+      li {
+        margin-top: 0.6em;
+
+        a {
+          @extend %link;
+          transition: color 0.4s ease;
+
+          &:is(:hover, :focus-visible) {
+            color: var(--clr-primary-400);
+          }
+        }
+      }
+    }
+
+    .visible {
+      visibility: visible;
+    }
+  }
+
+  @include max(special-1) {
+    .container {
+      flex: 1;
+    }
+  }
+
+  @include max(special-2) {
+    .container {
+      flex: 0.8;
+
+      .dropdown {
+        .shown {
+          div,
+          svg {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .notification svg {
+      font-size: 1.9rem;
+    }
+  }
+
+  @include max(special-3) {
+    .container {
+      flex: 1;
+    }
+  }
+
+  @include max(special-4) {
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+
+  @include max(special-5) {
+    .container {
+      flex: 0.8;
+
+      .search {
+        width: 60%;
+      }
+    }
+
+    .date {
+      display: none;
+    }
+  }
+
+  @include max(medium) {
+    .container {
+      flex: 1;
+    }
+  }
+
+  @include max(micro) {
+    padding-right: 5em;
+
+    .extra {
+      translate: 30% 0;
+    }
+  }
+
+  @include max(miniscule) {
+    .container {
+      flex: 0.5;
+    }
+
+    .search {
+      display: none;
+    }
+
+    .notification,
+    .dropdown {
+      min-width: max-content;
+    }
+  }
+}

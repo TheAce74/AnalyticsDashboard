@@ -9,7 +9,7 @@
   min-width: max-content;
   height: 100dvh;
   background-color: var(--menu);
-  box-shadow: 0 0 4px var(--shadow);
+  box-shadow: 1px 0 1px var(--shadow);
 
   @include motion {
     transition: all 0.4s ease;

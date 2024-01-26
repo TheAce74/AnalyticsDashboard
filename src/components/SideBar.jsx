@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import { getItem, setItem } from "../utils/localStorage";
 import PropTypes from "prop-types";
 import { useClickAway } from "../hooks/useClickAway";
+import { simulateClick } from "../utils/simClick";
 
 SideBar.propTypes = {
   openMenu: PropTypes.bool,
@@ -12,16 +13,12 @@ SideBar.propTypes = {
 
 function SideBar({ openMenu, setOpenMenu }) {
   const [dark, setDark] = useState(
-    getItem("dark") || window.matchMedia("(prefers-color-scheme: dark)").matches
+    getItem("dark") !== null
+      ? getItem("dark")
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
   );
   const [expanded, setExpanded] = useState(false);
   const clickAwayRef = useRef(null);
-
-  const simulateClick = (e) => {
-    if (e.key === "Enter") {
-      e.target.click();
-    }
-  };
 
   const setTheme = (bool) => {
     setItem("dark", bool);
