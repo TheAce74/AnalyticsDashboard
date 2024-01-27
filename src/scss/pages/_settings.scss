@@ -1,0 +1,173 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.settings {
+  padding-bottom: 2em;
+
+  .top {
+    @extend .flex;
+    justify-content: flex-start;
+    padding: 2em 4em;
+    width: 100%;
+
+    .user {
+      border-radius: 50%;
+      border: 2px solid var(--clr-primary-400);
+      width: max-content;
+
+      & > span {
+        @extend .flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--clr-neutral-100);
+        width: 10em;
+        aspect-ratio: 1;
+        text-align: center;
+        font-weight: 500;
+        border-radius: 50%;
+        position: relative;
+
+        .image {
+          @extend .grid-center;
+          overflow: hidden;
+          width: 10em;
+          aspect-ratio: 1;
+          border-radius: 50%;
+
+          img {
+            width: 10em;
+          }
+        }
+
+        button {
+          @extend %button;
+          background-color: var(--clr-primary-400);
+          border-radius: 50%;
+          padding: 0.5em;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          translate: 0% 0%;
+          transition: background-color 0.3s;
+
+          &:is(:hover, :focus-visible) {
+            background-color: var(--clr-success-400);
+          }
+        }
+      }
+    }
+
+    > div:last-child {
+      p {
+        color: var(--clr-neutral-400);
+      }
+    }
+  }
+
+  .edit {
+    @extend %button;
+    @extend .flex;
+    gap: 0.5em;
+    color: var(--clr-primary-400);
+    margin-inline: 4em;
+    margin-bottom: 1em;
+
+    &:is(:hover, :focus-visible) {
+      color: var(--clr-success-400);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    @include motion {
+      transition: all 0.4s ease;
+    }
+  }
+
+  .personal {
+    padding-inline: 4em;
+    width: 60%;
+
+    > * {
+      display: block;
+      width: 100%;
+
+      & + * {
+        margin-top: 1em;
+      }
+    }
+
+    label {
+      margin-top: 2em;
+      font-weight: 500;
+    }
+
+    input {
+      border: 1px solid transparent;
+      background-color: var(--menu);
+      padding: 1em;
+      border-radius: 0.5em;
+
+      &:not(:disabled) {
+        border-color: var(--text);
+        outline-color: var(--clr-primary-400);
+        background-color: var(--menu);
+      }
+    }
+
+    button {
+      @extend %button;
+      margin-top: 2em;
+      padding-block: 1em;
+      border-radius: 0.5em;
+      background-color: var(--clr-primary-400);
+      color: var(--text);
+      font-weight: 600;
+
+      &:active {
+        scale: 0.9;
+      }
+    }
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  @include max(special-3) {
+    .personal {
+      width: 100%;
+      padding-inline: 2em;
+    }
+
+    .top {
+      padding-inline: 2em;
+    }
+
+    .edit {
+      margin-inline: 2em;
+    }
+  }
+
+  @include max(small) {
+    .top {
+      .user {
+        & > span {
+          width: 6em;
+
+          .image {
+            width: 6em;
+
+            img {
+              width: 6em;
+            }
+          }
+
+          button {
+            translate: 10% 10%;
+          }
+        }
+      }
+    }
+  }
+}

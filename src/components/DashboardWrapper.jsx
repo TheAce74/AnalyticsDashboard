@@ -3,8 +3,18 @@ import Header from "./Header";
 import SideBar from "./SideBar";
 import { useEffect, useState } from "react";
 import Hamburger from "hamburger-react";
+import Loader from "./Loader";
 
 function DashboardWrapper() {
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoader(false);
+      clearTimeout(timeout);
+    }, 5000);
+  }, []);
+
   return (
     <main className="dashboard-wrapper">
       <MiniWrapper />
@@ -14,6 +24,7 @@ function DashboardWrapper() {
           <Outlet />
         </div>
       </div>
+      {loader && <Loader />}
     </main>
   );
 }

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useLayoutEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
+import SalesChart from "../../components/SalesChart";
+import OrdersTable from "../../components/OrdersTable";
 
 function Sales() {
   const { setTitle } = useAppContext();
@@ -18,19 +20,14 @@ function Sales() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse adipisci
-        temporibus enim culpa officiis rerum assumenda similique sequi dolorem
-        nihil quos repellendus dignissimos eius saepe, accusantium perferendis
-        ea, harum pariatur nobis cupiditate excepturi tenetur unde. Quis quam
-        corporis nesciunt repellat, soluta quas quod eveniet incidunt labore
-        beatae ad consectetur nihil amet ullam distinctio accusantium animi
-        excepturi? Quidem at modi doloremque deserunt commodi quis veritatis?
-        Minima nisi aut inventore in labore culpa fugit nam reprehenderit. Nobis
-        id magnam eum omnis inventore odit expedita suscipit facere aspernatur
-        iste aliquid alias ipsum nam pariatur dicta, possimus officia eveniet,
-        dolore voluptatibus perspiciatis, quisquam nostrum?
-      </p>
+      <div className="first">
+        <h3>Sales Trend</h3>
+        <SalesChart />
+      </div>
+      <div className="second">
+        <h3>Sales Records</h3>
+        <OrdersTable stopIndex={5} />
+      </div>
     </motion.section>
   );
 }

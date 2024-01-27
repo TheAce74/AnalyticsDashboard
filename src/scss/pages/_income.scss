@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.income {
+  .wrapper {
+    @extend .grid;
+    place-content: center;
+    min-height: calc(100dvh - em(100));
+    text-align: center;
+
+    p {
+      width: 24em;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    a {
+      @extend %link;
+      background-color: var(--clr-primary-400);
+      width: max-content;
+      margin-inline: auto;
+      padding: 1em;
+      border-radius: 0.5em;
+      font-weight: 700;
+      transition: background-color 0.4s ease;
+
+      &:is(:hover, :focus-visible) {
+        background-color: var(--clr-success-400);
+      }
+    }
+  }
+}

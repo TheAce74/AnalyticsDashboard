@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+.users {
+  > * {
+    width: 70%;
+  }
+
+  *:is(th, td):nth-of-type(n + 3) {
+    display: none;
+  }
+
+  @include max(special-4) {
+    > * {
+      width: 100%;
+    }
+  }
+}
