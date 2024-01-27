@@ -6,6 +6,18 @@
   align-items: stretch;
   justify-content: flex-start;
 
+  .outer {
+    width: 100%;
+  }
+
+  .inner {
+    padding: 1em;
+  }
+
+  .mini-wrapper {
+    min-height: 110dvh;
+  }
+
   .hamburger-react {
     position: fixed !important;
     top: 0.5em;

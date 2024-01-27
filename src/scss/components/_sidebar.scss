@@ -10,6 +10,7 @@
   height: 100dvh;
   background-color: var(--menu);
   box-shadow: 1px 0 1px var(--shadow);
+  z-index: 3;
 
   @include motion {
     transition: all 0.4s ease;
@@ -259,7 +260,6 @@
 
   @include max(micro) {
     position: fixed;
-    z-index: 3;
     translate: -100% 0;
 
     &[data-mobile="expanded"] {

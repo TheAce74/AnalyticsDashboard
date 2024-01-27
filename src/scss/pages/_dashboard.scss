@@ -1,0 +1,197 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.dashboard {
+  > div {
+    --gap: 1em;
+    @extend .flex;
+    align-items: stretch;
+    margin-bottom: 1em;
+
+    > * {
+      flex: 1;
+      min-width: 50%;
+    }
+  }
+
+  .sales-trend {
+    --gap: 1em;
+    @extend .flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    background-color: var(--menu);
+    padding: 1em;
+    border-radius: 0.5em;
+    border: 1px solid var(--shadow);
+
+    &-inner {
+      --gap: 1em;
+      @extend .flex;
+      margin-bottom: 1em;
+
+      > div {
+        --gap: 1em;
+        @extend .flex;
+      }
+    }
+  }
+
+  .overview {
+    --number-of-items: 2;
+    --padding-inline: 0;
+    --gap: 1em;
+    @extend .flexible-grid;
+
+    &-wrapper {
+      --gap: 1em;
+      @extend .flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      background-color: var(--menu);
+      border: 1px solid var(--shadow);
+      border-radius: 0.5em;
+      padding: 1em;
+
+      .top {
+        @extend .flex;
+
+        .ring {
+          border: 1px solid var(--shadow);
+          border-radius: 50%;
+          padding: 0.35em;
+        }
+      }
+
+      h3 {
+        font-weight: 500;
+      }
+
+      > p {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .bottom {
+        --gap: 1em;
+        @extend .flex;
+
+        p {
+          font-size: 0.85rem;
+        }
+
+        div {
+          --gap: 0.5em;
+          @extend .flex;
+          padding: 0.2em 0.5em;
+          border-radius: 100vmax;
+
+          &.bullish {
+            background-color: var(--clr-primary-300);
+            color: var(--clr-primary-400);
+          }
+
+          &.bearish {
+            background-color: var(--clr-error-300);
+            color: var(--clr-error-400);
+          }
+        }
+      }
+    }
+  }
+
+  .last-orders {
+    --gap: 0;
+    @extend .flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    background-color: var(--menu);
+    border: 1px solid var(--shadow);
+    border-radius: 0.5em;
+    padding: 1em;
+
+    > div {
+      @extend .flex;
+      margin-bottom: 0.3em;
+
+      a {
+        @extend %link;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--clr-primary-400);
+
+        &:is(:hover, :focus) {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    table {
+      flex: 1;
+    }
+
+    td,
+    th {
+      border-bottom: 2px solid var(--clr-primary-300);
+      padding-block: 1em;
+    }
+
+    th {
+      font-size: 1.1rem;
+    }
+  }
+
+  .top-platforms {
+    background-color: var(--menu);
+    border: 1px solid var(--shadow);
+    border-radius: 0.5em;
+    padding: 1em;
+
+    > div {
+      @extend .flex;
+      margin-bottom: 1em;
+
+      button {
+        @extend %button;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--clr-primary-400);
+
+        &:is(:hover, :focus) {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ul li {
+      h3 {
+        margin-bottom: 0.5em;
+      }
+
+      > div:last-child {
+        @extend .flex;
+        margin-block: 0.5em 1em;
+      }
+    }
+  }
+
+  @include max(special-1) {
+    > div {
+      flex-direction: column;
+    }
+  }
+}
+
+.ReactModal__Overlay {
+  background-color: var(--clr-neutral-850) !important;
+}
+
+.hover {
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+
+  &:is(:hover, :focus-visible) {
+    opacity: 1;
+  }
+}

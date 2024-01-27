@@ -5,6 +5,8 @@ import { getItem, setItem } from "../utils/localStorage";
 import PropTypes from "prop-types";
 import { useClickAway } from "../hooks/useClickAway";
 import { simulateClick } from "../utils/simClick";
+import { useModal } from "../hooks/useModal";
+import { useAlert } from "../hooks/useAlert";
 
 SideBar.propTypes = {
   openMenu: PropTypes.bool,
@@ -30,6 +32,41 @@ function SideBar({ openMenu, setOpenMenu }) {
   }, [setOpenMenu]);
 
   useClickAway(clickAwayRef, clickAway);
+
+  const [openModal, setOpenModal] = useState(false);
+  const { showAlert } = useAlert();
+
+  const modalRef = useRef({
+    title: null,
+    message: null,
+    buttonText1: null,
+    buttonText2: null,
+    callback: null,
+  });
+
+  const modal = useModal(openModal, setOpenModal, modalRef.current);
+
+  const showModal = () => {
+    modalRef.current = {
+      title: "Sign Out",
+      message: (
+        <p
+          style={{
+            marginBlock: ".5em",
+          }}
+        >
+          Are you sure you want to sign out?
+        </p>
+      ),
+      buttonText1: "No",
+      buttonText2: "Yes",
+      callback: () => {
+        showAlert("Sign out successful", { variant: "success" });
+        setOpenModal(false);
+      },
+    };
+    setOpenModal(true);
+  };
 
   return (
     <aside
@@ -503,7 +540,7 @@ function SideBar({ openMenu, setOpenMenu }) {
             <span className="after"></span>
           </li>
           <li>
-            <button>
+            <button onClick={showModal}>
               <div className="collapsible">
                 <svg
                   width="40"
@@ -560,6 +597,7 @@ function SideBar({ openMenu, setOpenMenu }) {
           </li>
         </ul>
       </section>
+      {modal}
     </aside>
   );
 }

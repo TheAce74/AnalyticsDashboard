@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.orders-table {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    min-width: max-content;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    border-bottom: 2px solid var(--menu);
+    padding: 0.7em;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  th {
+    text-align: justify;
+    font-size: 1.3rem;
+    padding-top: 0;
+  }
+
+  div {
+    --gap: 1em;
+    @extend .flex;
+    justify-content: flex-start;
+  }
+
+  td {
+    &[data-status="paid"] {
+      color: var(--clr-primary-400);
+    }
+
+    &[data-status="refund"] {
+      color: var(--clr-error-400);
+    }
+
+    &[data-status="pending"] {
+      color: var(--clr-warning-400);
+    }
+  }
+
+  button {
+    --gap: 0.5em;
+    @extend %button;
+    @extend .flex;
+
+    @include motion {
+      transition: color 0.4s ease;
+    }
+
+    path {
+      fill: var(--text);
+
+      @include motion {
+        fill: color 0.4s ease;
+      }
+    }
+
+    &:is(:hover, :focus-visible) {
+      color: var(--clr-primary-400);
+
+      path {
+        fill: var(--clr-primary-400);
+      }
+    }
+  }
+}

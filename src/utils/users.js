@@ -1,0 +1,173 @@
+import { randomDate } from "../utils/randomDate";
+import { format } from "date-fns";
+import { v4 as uuidv4 } from "uuid";
+import user1 from "../assets/user1.png";
+import user2 from "../assets/user2.png";
+import user3 from "../assets/user3.png";
+import user4 from "../assets/user4.png";
+import user5 from "../assets/user5.png";
+
+const users = [
+  {
+    name: "Marcus Bergson",
+    image: user1,
+    date: format(randomDate(), "PP"),
+    amount: "$80,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Jaydon Vaccaro",
+    image: user2,
+    date: format(randomDate(), "PP"),
+    amount: "$150,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Corey Schleifer",
+    image: user3,
+    date: format(randomDate(), "PP"),
+    amount: "$87,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Cooper Press",
+    image: user4,
+    date: format(randomDate(), "PP"),
+    amount: "$100,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Phillip Lubin",
+    image: user5,
+    date: format(randomDate(), "PP"),
+    amount: "$78,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Corey Schleifer",
+    image: user3,
+    date: format(randomDate(), "PP"),
+    amount: "$87,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Cooper Press",
+    image: user4,
+    date: format(randomDate(), "PP"),
+    amount: "$100,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Phillip Lubin",
+    image: user5,
+    date: format(randomDate(), "PP"),
+    amount: "$78,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Marcus Bergson",
+    image: user1,
+    date: format(randomDate(), "PP"),
+    amount: "$80,000",
+    status: "Pending",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Jaydon Vaccaro",
+    image: user2,
+    date: format(randomDate(), "PP"),
+    amount: "$150,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Corey Schleifer",
+    image: user3,
+    date: format(randomDate(), "PP"),
+    amount: "$87,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Cooper Press",
+    image: user4,
+    date: format(randomDate(), "PP"),
+    amount: "$100,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Phillip Lubin",
+    image: user5,
+    date: format(randomDate(), "PP"),
+    amount: "$78,000",
+    status: "Pending",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Jaydon Vaccaro",
+    image: user2,
+    date: format(randomDate(), "PP"),
+    amount: "$150,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Corey Schleifer",
+    image: user3,
+    date: format(randomDate(), "PP"),
+    amount: "$87,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Cooper Press",
+    image: user4,
+    date: format(randomDate(), "PP"),
+    amount: "$100,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Corey Schleifer",
+    image: user3,
+    date: format(randomDate(), "PP"),
+    amount: "$87,000",
+    status: "Paid",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Cooper Press",
+    image: user4,
+    date: format(randomDate(), "PP"),
+    amount: "$100,000",
+    status: "Pending",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Phillip Lubin",
+    image: user5,
+    date: format(randomDate(), "PP"),
+    amount: "$78,000",
+    status: "Pending",
+    invoice: uuidv4(),
+  },
+  {
+    name: "Jaydon Vaccaro",
+    image: user2,
+    date: format(randomDate(), "PP"),
+    amount: "$150,000",
+    status: "Refund",
+    invoice: uuidv4(),
+  },
+];
+
+export { users };

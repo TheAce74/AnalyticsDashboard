@@ -8,7 +8,7 @@ function DashboardWrapper() {
   return (
     <main className="dashboard-wrapper">
       <MiniWrapper />
-      <div>
+      <div className="outer">
         <Header />
         <div className="inner">
           <Outlet />
@@ -30,7 +30,7 @@ function MiniWrapper() {
   }, []);
 
   return (
-    <div>
+    <div className="mini-wrapper">
       <Hamburger
         toggled={openMenu}
         toggle={setOpenMenu}
